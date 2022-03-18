@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Homework</title>
+</head>
+
+<body>
+  <!--
+Необязательное задание.
+
+Необходимо реализовать функцию, которая будет принимать первым аргументом
+целое положительное число, в следующих трех аргументах функция принимает слова
+в разных склонениях.
+Функция должна возвращать одно из трех переданных в параметры слов подходящее
+под число, которое передано первым аргументом.
+
+Пример:
+console.log(declinationOfNumber(1, "яблоко", "яблока", "яблок")); // "яблоко"
+console.log(declinationOfNumber(2, "мяч", "мяча", "мячей")); // "мяча"
+console.log(declinationOfNumber(5, "стул", "стула", "стульев")); // "стульев"
+
+Функция должна работать с любым словом и любым целым положительным числом.
+Все аргументы, которые будут передаваться функции будут верны.
+-->
+  <script>
+    "use strict";
+
+    /**
+    * Функция склонения слова для числительного.
+    * @param {number} count - Числительное.
+    * @param {string} one - Вариант слова для цифры один
+    * @param {string} two - Вариант слова для цифр от 2 до 4
+    * @param {string} five - Вариант слова для цифр от 5 до 20 и 0
+    * @returns {string} Склоняемое слово
+    * @example
+    *
+    * declinationOfNumber(1, "яблоко", "яблока", "яблок");
+    * // => яблоко
+    */
+
+    function declinationOfNumber(count, one, two, five) {
+      const count100 = Math.abs(count) % 100;
+      const count10 = count100 % 10;
+
+      if (count10 === 1) {
+        return one;
+      }
+      if (count10 >= 2 && count10 <= 4) {
+        return two;
+      }
+      if (count100 >= 5 && count100 <= 20) {
+        return five;
+      }
+      return five;
+    }
+
+    const applesNumber = +prompt('Сколько у тебя яблок?');
+    const word = declinationOfNumber(applesNumber, "яблоко", "яблока", "яблок");
+
+    console.log(`У меня есть ${applesNumber} ${word}.`);
+    console.log(declinationOfNumber(1, "яблоко", "яблока", "яблок")); // "яблоко"
+    console.log(declinationOfNumber(2, "мяч", "мяча", "мячей")); // "мяча"
+    console.log(declinationOfNumber(5, "стул", "стула", "стульев")); // "стульев"
+
+  </script>
+</body>
+
+</html>
