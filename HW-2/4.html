@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Homework</title>
-</head>
-<body>
-<!--
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
 Обязательное задание.
 
 Необходимо реализовать четыре функции, каждая функция должна принимать по два
@@ -28,10 +28,70 @@
 
 Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
 -->
-<script>
-  "use strict";
+    <script>
+      "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
-</script>
-</body>
+      /**
+       * Сложение двух чисел
+       * @param {number} a - Первое число
+       * @param {number} b - Второе число
+       * @return {number} Сумма чисел
+       * @example
+       *
+       * sum(2,6);
+       * // => 8
+       */
+      function sum(a, b) {
+        return a + b;
+      }
+
+      /**
+       * Разница двух чисел, вычитает из большего числа
+       * @param {number} a - Первое число
+       * @param {number} b - Второе число
+       * @return {number} Разница чисел
+       * @example
+       * 
+       * diff(2,6);
+       * // => 4
+       */
+      function diff(a, b) {
+        return Math.abs(a - b);
+      }
+
+      /**
+       * Произведение двух чисел
+       * @param {number} a - Первое число
+       * @param {number} b - Второе число
+       * @return {number} Произведение чисел
+       * @example
+       * 
+       * multiply(2,6);
+       * // => 12
+       */
+      function multiply(a, b) {
+        return a * b;
+      }
+
+      /**
+       * Частное двух чисел
+       * @param {number} a - Первое число
+       * @param {number} b - Второе число
+       * @return {number} Частное чисел
+       * @example
+       * 
+       * div(24,6);
+       * // => 4
+       */
+      function div(a, b) {
+        return a / b;
+      }
+
+      console.log(sum(2, 6));
+      console.log(diff(2, 6));
+      console.log(multiply(2, 6));
+      console.log(div(24, 6));
+
+    </script>
+  </body>
 </html>
