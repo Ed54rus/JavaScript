@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Homework</title>
-</head>
-<body>
-<!--
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
 Обязательное задание.
 
 Необходимо скопировать и вставить в данный скрипт все функции из 4 задания.
@@ -29,10 +29,96 @@ Infinity делать не нужно, однако, в случае если б
 
 Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
 -->
-<script>
-  "use strict";
+    <script>
+      "use strict";
+      
+      /**
+       * Вычисляет операцию, переданную в третий параметр между двумя первыми
+       * аргументами функции
+       * @param {number} arg1 - Первое число
+       * @param {number} arg2 - Второе число
+       * @param {string} operation - Операция, одна из возможных строк:
+       * "+", "-", "*", "/"
+       * @return {number} Результат операции operation над первыми двумя
+       * аргументами, возвращает NaN, если параметры заданы неверно
+       * @example
+       *
+       * mathOperation(5, 3, "*");
+       * // => 15
+       * mathOperation(5, 3, ".");
+       * // => NaN
+       */
+      function mathOperation(arg1, arg2, operation) {
+        switch(operation){
+          case "+": return sum(arg1, arg2);
+          case "-": return diff(arg1, arg2);
+          case "*": return multiply(arg1, arg2);
+          case "/": return div(arg1, arg2);
+          default: return NaN;
+        }
+      }
+      
+      /**
+       * Сложение двух чисел
+       * @param {number} a - Первое число
+       * @param {number} b - Второе число
+       * @return {number} Сумма чисел
+       * @example
+       *
+       * sum(2,6);
+       * // => 8
+       */
+      function sum(a, b) {
+        return a + b;
+      }
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
-</script>
-</body>
+      /**
+       * Разница двух чисел, вычитает из большего числа
+       * @param {number} a - Первое число
+       * @param {number} b - Второе число
+       * @return {number} Разница чисел
+       * @example
+       *
+       * diff(2,6);
+       * // => 4
+       */
+      function diff(a, b) {
+        return Math.abs(a - b);
+      }
+
+      /**
+       * Произведение двух чисел
+       * @param {number} a - Первое число
+       * @param {number} b - Второе число
+       * @return {number} Произведение чисел
+       * @example
+       *
+       * multiply(2,6);
+       * // => 12
+       */
+      function multiply(a, b) {
+        return a * b;
+      }
+
+      /**
+       * Частное двух чисел
+       * @param {number} a - Первое число
+       * @param {number} b - Второе число
+       * @return {number} Частное чисел
+       * @example
+       *
+       * div(24,6);
+       * // => 4
+       */
+      function div(a, b) {
+        return a / b;
+      }
+
+      console.log(mathOperation(5, 3, "+"));
+      console.log(mathOperation(5, 3, "-"));
+      console.log(mathOperation(5, 3, "*"));
+      console.log(mathOperation(5, 3, "/"));
+      console.log(mathOperation(5, 3, "."));
+    </script>
+  </body>
 </html>
