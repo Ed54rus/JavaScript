@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Homework</title>
 </head>
+
 <body>
-<!--
+  <!--
 Обязательное задание.
 
 Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
@@ -47,10 +49,85 @@
 что-нибудь пропустить.
 4. Если непонятно условие - задайте вопрос.
 -->
-<script>
-  "use strict";
+  <script>
+    "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
-</script>
+    function PostES5(author, text) {
+      this.author = author;
+      this.text = text;
+      this.updatedAt = new Date();
+    }
+
+    PostES5.prototype.edit = function (text) {
+      this.text = text;
+      this.updatedAt = new Date();
+    }
+
+    const postES5 = new PostES5('Eduard', 'что-то написано');
+    console.log(postES5);
+    postES5.edit('изменил текст поста');
+    console.log(postES5);
+
+    class PostES6 {
+      constructor(author, text) {
+        this.author = author;
+        this.text = text;
+        this.updatedAt = new Date();
+      }
+      edit(text) {
+        this.text = text;
+        this.updatedAt = new Date();
+      }
+    }
+
+    const postES6 = new PostES6('Eduard', 'что-то написано');
+    console.log(postES6);
+    postES5.edit('изменил текст поста');
+    console.log(postES6);
+
+    ///////////////////////////////////////////////////////////////////////////////
+
+    function AttachedPostES5(author, text) {
+      PostES5.call(this, author, text);
+      this.highlighted = false;
+    }
+
+    AttachedPostES5.prototype = Object.create(PostES5.prototype);
+    AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+    AttachedPostES5.prototype.makeTextHighlighted = function () {
+      this.highlighted = true;
+      this.updatedAt = new Date();
+    }
+
+    const attachedPostES5 = new AttachedPostES5('Eduard', 'что-то написано');
+    console.log(attachedPostES5);
+    attachedPostES5.edit('Проверяю изменение текста');
+    attachedPostES5.makeTextHighlighted();
+    console.log(attachedPostES5);
+
+
+    class AttachedPostES6 extends PostES6 {
+      highlighted = false;
+
+      makeTextHighlighted() {
+        this.highlighted = true;
+        this.updatedAt = new Date();
+        //не смог разобраться как вывести сокращенно дату и время (:
+      }
+    }
+
+    const attachedPostES6 = new AttachedPostES6('Eduard', 'что-то написано');
+    console.log(attachedPostES6);
+    attachedPostES6.edit('Проверяю изменение текста');
+    attachedPostES6.makeTextHighlighted();
+    console.log(attachedPostES6);
+
+// также не понял почему у меня в свойствах объекта hightlited всегда true 
+// хотя выводится правильно
+
+
+  </script>
 </body>
+
 </html>
